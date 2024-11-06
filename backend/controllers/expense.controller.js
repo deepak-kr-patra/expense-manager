@@ -40,7 +40,7 @@ export const addExpense = async (req, res) => {
             amount,
             category,
             date: date ? new Date(date) : new Date(),
-            state: "completed"
+            status: "spent"
         });
 
         if (newExpense) {

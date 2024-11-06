@@ -18,16 +18,16 @@ const expenseSchema = mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ["food", "clothing", "personal", "mobile", "fuel", "others"]
+        enum: ["food", "clothing", "home", "travel", "study", "others"]
     },
     date: {
         type: Date,
         required: true
     },
-    state: {
+    status: {
         type: String,
         required: true,
-        enum: ["pending", "completed"]
+        enum: ["pending", "spent"]
     }
 }, { timestamps: true });
 
