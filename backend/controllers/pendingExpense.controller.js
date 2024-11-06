@@ -41,7 +41,7 @@ export const addPendingExpense = async (req, res) => {
             amount,
             category,
             date: date ? new Date(date) : new Date(),
-            state: "pending"
+            status: "pending"
         });
 
         if (newPendingExpense) {
@@ -79,8 +79,7 @@ export const updatePendingExpense = async (req, res) => {
             title,
             amount,
             category,
-            date: date ? new Date(date) : pendingExpenseToUpdate.date,
-            state: "pending"
+            date: date ? new Date(date) : pendingExpenseToUpdate.date
         };
 
         let updatedPendingExpense = await Expense.findByIdAndUpdate(pendingExpenseToUpdateId, { $set: newPendingExpense }, { new: true });
@@ -149,7 +148,7 @@ export const completePendingExpense = async (req, res) => {
 
         const newCompletedExpense = {
             date: date ? new Date(date) : pendingExpenseToComplete.date,
-            state: "completed"
+            status: "spent"
         };
 
         let updatedCompletedExpense = await Expense.findByIdAndUpdate(pendingExpenseToCompleteId, { $set: newCompletedExpense }, { new: true });
@@ -166,7 +165,7 @@ export const completePendingExpense = async (req, res) => {
         await PendingExpenseList.findByIdAndUpdate(pendingExpenseList._id, { $set: newPendingExpenseList }, { new: true });
 
         // adding the expense id into expenseList collection
-        let expenseList = await ExpenseList.findOne({user: userId});
+        let expenseList = await ExpenseList.findOne({ user: userId });
 
         if (!expenseList) {
             expenseList = await new ExpenseList({
