@@ -1,8 +1,13 @@
-import SideNav from '../components/SideNav';
 import BarGraph from '../components/BarGraph';
 import PieChart from '../components/PieChart';
-import Expenses from '../components/expenses/Expenses';
+
 import useScreenWidth from '../zustand/useScreenwidth';
+import { Route, Routes } from 'react-router-dom';
+
+import SideNav from '../components/SideNav';
+import Expenses from '../components/expenses/Expenses';
+import PendingExpenses from '../components/pending_expenses/PendingExpenses';
+import Charts from '../components/charts/Charts';
 
 
 const Home = () => {
@@ -20,7 +25,11 @@ const Home = () => {
       </div>
       <div className={`grow h-[calc(100vh-168px)] lg:h-full flex flex-col lg:flex-row ${padding}`}>
         {/* browser routes */}
-        <Expenses />
+        <Routes>
+          <Route path="/" element={<Charts />} />
+          <Route path="expenses/*" element={<Expenses />} />
+          <Route path="pending/*" element={<PendingExpenses />} />
+        </Routes>
       </div>
     </div>
   )

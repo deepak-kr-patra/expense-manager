@@ -1,22 +1,22 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useDebouncedCallback } from 'use-debounce';
-import useExpenses from '../../zustand/useExpenses';
+import usePendingExpenses from '../../zustand/usePendingExpenses';
 import formatDateToLocal from '../../utils/formatDateToLocal';
 
 
-export default function Search() {
+export default function SearchPendingExpenses() {
 
-    const { expenses, setSelectedExpenses } = useExpenses();
+    const { pendingExpenses, setSelectedPendingExpenses } = usePendingExpenses();
 
     const handleSearch = useDebouncedCallback((term) => {
-        const filteredExpenses = expenses.filter((expense) => (
+        const filteredExpenses = pendingExpenses.filter((expense) => (
             expense.title.toLowerCase().includes(term.toLowerCase()) || 
             expense.amount.toString().includes(term) || 
             expense.category.toLowerCase().includes(term.toLowerCase()) || 
             formatDateToLocal(expense.date).toLowerCase().includes(term.toLowerCase())
         ));
 
-        setSelectedExpenses(filteredExpenses);
+        setSelectedPendingExpenses(filteredExpenses);
     }, 300);
 
     return (

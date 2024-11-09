@@ -1,11 +1,16 @@
 import { useState } from "react";
-import useExpenses from "../../zustand/useExpenses";
+import usePendingExpenses from "../../zustand/usePendingExpenses";
 import toast from "react-hot-toast";
 
 
 const useRemovePendingExpense = () => {
     const [loading, setLoading] = useState(false);
-    const { pendingExpenses, setPendingExpenses } = useExpenses();
+    const {
+        pendingExpenses,
+        setPendingExpenses,
+        selectedPendingExpenses,
+        setSelectedPendingExpenses
+    } = usePendingExpenses();
 
     const removePendingExpense = async (pendingExpenseToRemoveId) => {
         setLoading(true);
@@ -26,8 +31,13 @@ const useRemovePendingExpense = () => {
             if (index !== -1) {
                 pendingExpenses.splice(index, 1);
             }
+            const index2 = selectedPendingExpenses.findIndex(pendingExpense => pendingExpense._id === pendingExpenseToRemoveId);
+            if (index2 !== -1) {
+                selectedPendingExpenses.splice(index2, 1);
+            }
 
             setPendingExpenses(pendingExpenses);
+            setSelectedPendingExpenses(selectedPendingExpenses);
 
         } catch (error) {
             toast.error(error.message);

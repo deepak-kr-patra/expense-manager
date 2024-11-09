@@ -134,7 +134,7 @@ export const completePendingExpense = async (req, res) => {
         // changing the state of expense from pending to completed
         const userId = req.user._id;
         const { id: pendingExpenseToCompleteId } = req.params;
-        const { date } = req.body;
+        const { title, amount, category, date } = req.body;
 
         const pendingExpenseToComplete = await Expense.findById(pendingExpenseToCompleteId);
 
@@ -147,6 +147,9 @@ export const completePendingExpense = async (req, res) => {
         }
 
         const newCompletedExpense = {
+            title,
+            amount,
+            category,
             date: date ? new Date(date) : pendingExpenseToComplete.date,
             status: "spent"
         };

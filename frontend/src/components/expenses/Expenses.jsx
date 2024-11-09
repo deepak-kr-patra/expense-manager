@@ -1,11 +1,10 @@
 import { PlusIcon } from "@heroicons/react/24/outline"
-import Search from "./Search"
-import Table from "./Table"
+import SearchExpenses from "./SearchExpenses"
+import ExpensesTable from "./ExpensesTable"
 import useExpenses from "../../zustand/useExpenses"
 import AddExpenseModal from "./modals/AddExpenseModal"
 import RemoveExpenseModal from "./modals/RemoveExpenseModal"
 import UpdateExpenseModal from "./modals/updateExpenseModal"
-import { ExpensesTableSkeleton } from "../Skeletons"
 
 
 const Expenses = () => {
@@ -40,17 +39,16 @@ const Expenses = () => {
                 <h1 className="text-lg lg:text-2xl page-heading">Expenses</h1>
             </div>
             <div className="mt-2 lg:mt-8 flex items-center justify-between gap-2">
-                <Search />
+                <SearchExpenses />
                 <button onClick={() => toggleAddExpenseModal()} className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
                     <span className="hidden md:block">Add Expense</span>{' '}
                     <PlusIcon className="h-5 md:ml-4" />
                 </button>
             </div>
-            <Table
+            <ExpensesTable
                 toggleRemoveExpenseModal={toggleRemoveExpenseModal}
                 toggleUpdateExpenseModal={toggleUpdateExpenseModal}
             />
-            {/* <ExpensesTableSkeleton/> */}
 
             <AddExpenseModal toggleAddExpenseModal={toggleAddExpenseModal} />
             <RemoveExpenseModal toggleRemoveExpenseModal={toggleRemoveExpenseModal} />

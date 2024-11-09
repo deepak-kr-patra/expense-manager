@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import useExpenses from "../../zustand/useExpenses";
+import usePendingExpenses from "../../zustand/usePendingExpenses";
 
 
 const useGetPendingExpenses = () => {
     const [loading, setLoading] = useState(false);
-    const { pendingExpenses, setPendingExpenses } = useExpenses();
+    const {
+        setPendingExpenses,
+        selectedPendingExpenses,
+        setSelectedPendingExpenses
+    } = usePendingExpenses();
 
     useEffect(() => {
         const getPendingExpenses = async () => {
@@ -24,6 +28,7 @@ const useGetPendingExpenses = () => {
                 }
 
                 setPendingExpenses(data);
+                setSelectedPendingExpenses(data);
 
             } catch (error) {
                 toast.error(error.message);
@@ -32,9 +37,9 @@ const useGetPendingExpenses = () => {
             }
         };
         getPendingExpenses();
-    },[]);
+    }, []);
 
-    return { loading, pendingExpenses };
+    return { loading, selectedPendingExpenses };
 };
 
 export default useGetPendingExpenses;
