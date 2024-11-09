@@ -6,8 +6,6 @@ const useExpenses = create((set) => ({
     setExpenses: (expenses) => set({ expenses }),
     selectedExpenses: [],
     setSelectedExpenses: (selectedExpenses) => set({ selectedExpenses }),
-    pendingExpenses: [],
-    setPendingExpenses: (pendingExpenses) => set({ pendingExpenses }),
     expenseToRemoveId: null,
     setExpenseToRemoveId: (expenseToRemoveId) => set({ expenseToRemoveId }),
     expenseToUpdate: {},

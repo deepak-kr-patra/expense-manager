@@ -6,17 +6,17 @@ import ExpenseStatus from "./ExpenseStatus";
 import { ExpensesTableSkeleton } from "../Skeletons";
 
 
-const Table = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) => {
+const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) => {
 
     const { loading, selectedExpenses } = useGetExpenses();
 
     const icons = {
-        food: "./cutlery.png",
-        clothing: "./wardrobe.png",
-        home: "./house.png",
-        travel: "./suitcase.png",
-        study: "./studying.png",
-        others: "./unknown.png"
+        food: "/cutlery.png",
+        clothing: "/wardrobe.png",
+        home: "/house.png",
+        travel: "/suitcase.png",
+        study: "/studying.png",
+        others: "/unknown.png"
     };
 
     return (
@@ -152,7 +152,7 @@ const Table = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) => {
     )
 }
 
-export default Table
+export default ExpensesTable
 
 
 {/* <table className="hidden w-full text-gray-900 lg:table">

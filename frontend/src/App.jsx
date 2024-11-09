@@ -1,6 +1,5 @@
 import './App.css'
 import {
-  BrowserRouter,
   Routes,
   Route,
   Navigate,
@@ -26,14 +25,13 @@ function App() {
 
   return (
     <div className='wrapper'>
-      <BrowserRouter>
-        <Routes>
-          {/* <Route path="/" element={<Login />} /> */}
-          <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />} />
-          <Route path="login/*" element={authUser ? <Navigate to={"/"} /> : <Login />} />
-          <Route path="signup/*" element={authUser ? <Navigate to={"/"} /> : <Signup />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />} /> */}
+        <Route path="/" element={authUser ? <Navigate to={"/dashboard"} /> : <Navigate to={"/login"} />} />
+        <Route path="dashboard/*" element={authUser ? <Home /> : <Navigate to={"/login"} />} />
+        <Route path="login/*" element={authUser ? <Navigate to={"/dashboard"} /> : <Login />} />
+        <Route path="signup/*" element={authUser ? <Navigate to={"/dashboard"} /> : <Signup />} />
+      </Routes>
       <Toaster />
     </div>
   )
