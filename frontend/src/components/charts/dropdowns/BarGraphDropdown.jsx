@@ -1,0 +1,58 @@
+import { useState } from 'react';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import useChartsDetails from '../../../zustand/useChartsDetails';
+
+
+const BarGraphDropdown = () => {
+
+    const { barGraphPeriod, setBarGraphPeriod } = useChartsDetails();
+    const [toggleState, setToggleState] = useState(false);
+
+    const setPeriodStr = (periodStr) => {
+        setBarGraphPeriod(periodStr);
+    };
+
+    const toggleDropdown = () => {
+        const dropdown = document.getElementById('graph-dropdown');
+
+        dropdown.classList.contains('dropdown-open') ? dropdown.classList.remove('dropdown-open') : dropdown.classList.add('dropdown-open');
+
+        toggleState === false ? setToggleState(true) : setToggleState(false);
+    };
+
+    return (
+        <div
+            className="dropdown dropdown-bottom dropdown-end rounded-lg h-6 lg:h-9 flex items-center px-2 lg:px-4 bg-[#EAECEF] w-[108px] lg:w-32 border-2 hover:border-black cursor-pointer"
+            id='graph-dropdown'
+        >
+            <div
+                className='w-full flex items-center justify-between gap-2'
+                onClick={() => toggleDropdown()}
+            >
+                <h3 className='text-xs lg:text-md'>{barGraphPeriod}</h3>
+                {!toggleState ? <ChevronDownIcon className='w-3 lg:w-4' /> : <ChevronUpIcon className='w-3 lg:w-4' />}
+            </div>
+
+            <ul
+                // tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                onClick={() => toggleDropdown()}
+            >
+                <div
+                    className='p-2 max-md:p-1.5 max-sm:p-1 rounded-lg hover:bg-slate-200 cursor-pointer'
+                    onClick={() => setPeriodStr('All Time')}
+                >
+                    All Time
+                </div>
+                <div
+                    className='p-2 max-md:p-1.5 max-sm:p-1 rounded-lg hover:bg-slate-200 cursor-pointer'
+                    onClick={() => setPeriodStr('This Year')}
+                >
+                    This Year
+                </div>
+            </ul>
+        </div>
+    )
+}
+
+export default BarGraphDropdown

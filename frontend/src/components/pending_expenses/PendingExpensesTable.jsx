@@ -1,11 +1,15 @@
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import useGetPendingExpenses from "../../hooks/pending_expenses/useGetPendingExpenses";
 import formatDateToLocal from "../../utils/formatDateToLocal";
 import formatCurrency from "../../utils/formatCurrency";
-import { ExpensesTableSkeleton } from "../Skeletons";
+import { ExpensesTableSkeleton, PendingExpensesTableSkeleton } from "../Skeletons";
 
 
-const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePendingExpenseModal, toggleCompletePendingExpenseModal }) => {
+const PendingExpensesTable = ({
+    toggleRemovePendingExpenseModal,
+    toggleUpdatePendingExpenseModal,
+    toggleCompletePendingExpenseModal
+}) => {
 
     const { loading, selectedPendingExpenses } = useGetPendingExpenses();
 
@@ -20,9 +24,16 @@ const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePen
 
     return (
         <>
-            {loading && <ExpensesTableSkeleton />}
+            {loading && <PendingExpensesTableSkeleton />}
 
-            {!loading &&
+            {!loading && selectedPendingExpenses.length === 0 && (
+                <div className="mt-4 lg:mt-6 w-full grow flex flex-col items-center justify-center rounded-lg bg-gray-50 p-2 gap-1">
+                    <h3 className="text-sm">You have no pending expense.</h3>
+                    <h3 className="text-sm">Add an upcoming expense!</h3>
+                </div>
+            )}
+
+            {!loading && selectedPendingExpenses.length > 0 &&
                 <div className="mt-4 lg:mt-6 w-full overflow-y-auto rounded-lg bg-gray-50 border-8 lg:border-r-0xxx lg:border-t-0 border-gray-50">
                     <div className="lg:hidden flex flex-col gap-2">
                         {selectedPendingExpenses?.map((expense) => (
@@ -41,7 +52,6 @@ const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePen
                                         />
                                         <p>{expense.title}</p>
                                     </div>
-                                    {/* <ExpenseStatus status={expense.status} /> */}
                                 </div>
                                 <div className="flex w-full items-center justify-between pt-4">
                                     <div>
@@ -63,8 +73,7 @@ const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePen
                                             className="rounded-md border p-2 hover:bg-gray-100"
                                             onClick={() => toggleCompletePendingExpenseModal(expense)}
                                         >
-                                            {/* <PencilIcon className="w-5" /> */}
-                                            C
+                                            <CheckIcon className="w-5" />
                                         </button>
                                         <button
                                             className="rounded-md border p-2 hover:bg-gray-100"
@@ -92,9 +101,6 @@ const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePen
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Date
                                 </th>
-                                {/* <th scope="col" className="px-3 py-5 font-medium">
-                            Status
-                        </th> */}
                                 <th scope="col" className="relative py-3 pl-6 pr-3">
                                     <span className="sr-only">Edit</span>
                                 </th>
@@ -129,9 +135,6 @@ const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePen
                                     <td className="whitespace-nowrap px-3 py-3">
                                         {formatDateToLocal(expense.date)}
                                     </td>
-                                    {/* <td className="whitespace-nowrap px-3 py-3">
-                                <ExpenseStatus status={expense.status} />
-                            </td> */}
                                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                         <div className="flex justify-end gap-3">
                                             <button
@@ -144,8 +147,7 @@ const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePen
                                                 className="rounded-md border p-2 hover:bg-gray-100"
                                                 onClick={() => toggleCompletePendingExpenseModal(expense)}
                                             >
-                                                {/* <PencilIcon className="w-5" /> */}
-                                                C
+                                                <CheckIcon className="w-5" />
                                             </button>
                                             <button
                                                 className="rounded-md border p-2 hover:bg-gray-100"
@@ -166,74 +168,3 @@ const PendingExpensesTable = ({ toggleRemovePendingExpenseModal, toggleUpdatePen
 }
 
 export default PendingExpensesTable
-
-
-{/* <table className="hidden w-full text-gray-900 lg:table">
-                <thead className="rounded-lg text-left text-sm font-normal overflow-y-auto">
-                    <tr className="text-black textarea-md">
-                        <th scope="col" className="px-3 py-5 font-medium">
-                            Title
-                        </th>
-                        <th scope="col" className="px-3 py-5 font-medium">
-                            Category
-                        </th>
-                        <th scope="col" className="px-3 py-5 font-medium">
-                            Amount
-                        </th>
-                        <th scope="col" className="px-3 py-5 font-medium">
-                            Date
-                        </th>
-                        <th scope="col" className="px-3 py-5 font-medium">
-                            Status
-                        </th>
-                        <th scope="col" className="relative py-3 pl-6 pr-3">
-                            <span className="sr-only">Edit</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody className="bg-white h-auto overflow-y-auto z-0">
-                    {expenses?.map((expense) => (
-                        <tr
-                            key={expense._id}
-                            className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
-                        >
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <div className="flex items-center gap-3">
-                                    <p>{expense.title}</p>
-                                </div>
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                <div className="flex items-center gap-2">
-                                    <img
-                                        src={icons[expense.category]}
-                                        // className="rounded-full"
-                                        alt="image"
-                                        width={28}
-                                        height={28}
-                                    />
-                                    <p>{expense.category}</p>
-                                </div>
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                {formatCurrency(expense.amount)}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                {formatDateToLocal(expense.date)}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                <ExpenseStatus status={expense.status} />
-                            </td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <div className="flex justify-end gap-3">
-                                    <button className="rounded-md border p-2 hover:bg-gray-100">
-                                        <PencilIcon className="w-5" />
-                                    </button>
-                                    <button className="rounded-md border p-2 hover:bg-gray-100">
-                                        <TrashIcon className="w-5" />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table> */}
