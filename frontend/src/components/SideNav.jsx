@@ -1,43 +1,42 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline';
 import NavLinks from './NavLinks';
-import useLogout from '../hooks/auth/useLogout';
-import useScreenWidth from '../zustand/useScreenwidth';
+// import { FaChartColumn } from "react-icons/fa6";
+import LogOutModal from './LogOutModal';
 
 
 export default function SideNav() {
 
-    const { loading, logout } = useLogout();
+    const toggleLogoutModal = () => {
+        const logoutModal = document.getElementById('logout-modal-container');
 
-    const { screenWidth } = useScreenWidth();
-
-    const flex_dir = screenWidth < 1200 ? "flex-row" : "flex-col";
+        logoutModal.classList.contains('show-modal-container') ? logoutModal.classList.remove('show-modal-container') : logoutModal.classList.add('show-modal-container');
+    };
 
     return (
-        <div className="flex h-full flex-col px-3 py-4 lg:px-2">
+        <div className="flex h-full flex-col px-3 py-4 pb-0 lg:pb-4 lg:px-2">
             <Link
-                className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 lg:h-40"
+                className="mb-2 flex h-14 items-end justify-start rounded-md bg-blue-600 p-4 px-2 lg:h-40"
                 to="/"
             >
-                <div className="w-32 text-white lg:w-40">
-                    {/* <AcmeLogo /> */}
+                <div className="w-full flex items-center justify-center gap-3 text-white lg:w-full">
+                    <p className='logo-header'>Expense Manager</p>
+                    {/* <FaChartColumn className="text-lg" /> */}
                 </div>
             </Link>
             <div className={`flex grow flex-row justify-between space-x-2 lg:flex-col lg:space-x-0 lg:space-y-2`}>
                 <NavLinks />
                 <div className="hidden h-auto w-full grow rounded-md bg-gray-50 lg:block"></div>
-                {/* <form onSubmit={() => logout()}> */}
                 <button
-                    type='submit'
-                    className="flex h-[48px] w-fullmmm growxxx items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 lg:flex-none lg:justify-start lg:p-2 lg:px-3"
-                    onClick={() => logout()}
+                    className="flex h-[40px] items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 lg:flex-none lg:justify-start lg:p-2 lg:px-3"
+                    onClick={() => toggleLogoutModal()}
                 >
-                    {/* <PowerIcon className="w-6" /> */}
-                    <ArrowLeftStartOnRectangleIcon className='w-6' />
+                    <ArrowLeftStartOnRectangleIcon className='w-4 lg:w-6' />
                     <div className="hidden lg:block">Sign Out</div>
                 </button>
-                {/* </form> */}
             </div>
+
+            <LogOutModal toggleLogoutModal={toggleLogoutModal} />
         </div>
     );
 }

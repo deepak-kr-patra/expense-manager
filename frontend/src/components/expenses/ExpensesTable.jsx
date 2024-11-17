@@ -2,7 +2,6 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import useGetExpenses from "../../hooks/expenses/useGetExpenses";
 import formatDateToLocal from "../../utils/formatDateToLocal";
 import formatCurrency from "../../utils/formatCurrency";
-import ExpenseStatus from "./ExpenseStatus";
 import { ExpensesTableSkeleton } from "../Skeletons";
 
 
@@ -23,7 +22,14 @@ const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) =
         <>
             {loading && <ExpensesTableSkeleton />}
 
-            {!loading &&
+            {!loading && selectedExpenses.length === 0 && (
+                <div className="mt-4 lg:mt-6 w-full grow flex flex-col items-center justify-center rounded-lg bg-gray-50 p-2 gap-1">
+                    <h3 className="text-sm">You have made no expense.</h3>
+                    <h3 className="text-sm">Add an expense!</h3>
+                </div>
+            )}
+
+            {!loading && selectedExpenses.length > 0 &&
                 <div className="mt-4 lg:mt-6 w-full overflow-y-auto rounded-lg bg-gray-50 border-8 lg:border-r-0xxx lg:border-t-0 border-gray-50">
                     <div className="lg:hidden flex flex-col gap-2">
                         {selectedExpenses?.map((expense) => (
@@ -123,9 +129,6 @@ const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) =
                                     <td className="whitespace-nowrap px-3 py-3">
                                         {formatDateToLocal(expense.date)}
                                     </td>
-                                    {/* <td className="whitespace-nowrap px-3 py-3">
-                                <ExpenseStatus status={expense.status} />
-                            </td> */}
                                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                         <div className="flex justify-end gap-3">
                                             <button

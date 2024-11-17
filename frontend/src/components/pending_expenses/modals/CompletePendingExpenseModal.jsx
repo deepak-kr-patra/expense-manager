@@ -43,7 +43,7 @@ const CompletePendingExpenseModal = ({ toggleCompletePendingExpenseModal }) => {
     return (
         <div className='modal-container' id='complete-pending-expense-modal-container'>
             <div className="modal-box max-sm:p-4 bg-[#F4F5F7]">
-                <h3 className="font-bold text-lg max-sm:text-[16px] mb-8">Complete pending expense</h3>
+                <h3 className="font-bold text-lg max-sm:text-[16px] mb-8">Complete pending expense?</h3>
                 <form onSubmit={finishPendingExpense} className='flex flex-col'>
                     <div className='relative mb-8 max-sm:mb-6'>
                         <input
