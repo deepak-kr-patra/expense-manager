@@ -48,7 +48,6 @@ const UpdatePendingExpenseModal = ({ toggleUpdatePendingExpenseModal }) => {
                     <div className='relative mb-8 max-sm:mb-6'>
                         <input
                             type="text"
-                            // id='title-input'
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full h-12"
                             placeholder='Enter title'
                             value={pendingExpenseToUpdate?.title}
@@ -61,7 +60,6 @@ const UpdatePendingExpenseModal = ({ toggleUpdatePendingExpenseModal }) => {
                             type="number"
                             placeholder="Enter amount"
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full"
-                            // id='count'
                             value={pendingExpenseToUpdate?.amount}
                             onChange={(e) => setPendingExpenseToUpdate({ ...pendingExpenseToUpdate, amount: e.target.value })}
                             step={.01}
@@ -86,7 +84,6 @@ const UpdatePendingExpenseModal = ({ toggleUpdatePendingExpenseModal }) => {
                         <input
                             type="date"
                             className="w-full md:w-1/2 input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
-                            // id='date'
                             value={pendingExpenseToUpdate?.date}
                             onChange={(e) => setPendingExpenseToUpdate({ ...pendingExpenseToUpdate, date: e.target.value })}
                         />

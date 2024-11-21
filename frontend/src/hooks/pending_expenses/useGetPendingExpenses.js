@@ -6,6 +6,7 @@ import usePendingExpenses from "../../zustand/usePendingExpenses";
 const useGetPendingExpenses = () => {
     const [loading, setLoading] = useState(false);
     const {
+        pendingExpenses,
         setPendingExpenses,
         selectedPendingExpenses,
         setSelectedPendingExpenses
@@ -39,7 +40,7 @@ const useGetPendingExpenses = () => {
         getPendingExpenses();
     }, []);
 
-    return { loading, selectedPendingExpenses };
+    return { loading, pendingExpenses, selectedPendingExpenses };
 };
 
 export default useGetPendingExpenses;

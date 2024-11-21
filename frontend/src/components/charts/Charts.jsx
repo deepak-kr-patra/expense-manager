@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import useGetExpenses from "../../hooks/expenses/useGetExpenses"
 import formatCurrency from "../../utils/formatCurrency"
 import useScreenWidth from "../../zustand/useScreenwidth"
@@ -17,8 +18,8 @@ const Charts = () => {
         total_expense += expense.amount;
     });
 
-    const flex_dir = screenWidth < 600 ? "flex-col" : "flex-row";
-    const scrollable = screenWidth < 600 ? "overflow-y-scroll" : "";
+    // const flex_dir = screenWidth < 600 ? "flex-col" : "flex-row";
+    // const scrollable = screenWidth < 600 ? "overflow-y-scroll" : "";
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -36,7 +37,14 @@ const Charts = () => {
                 )}
             </div>
             <div
-                className={`h-[calc(100vh-168px)] lg:mt-8 flex ${flex_dir} ${scrollable} w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6`}
+                // className={`h-[calc(100vh-168px)] lg:mt-8 flex ${flex_dir} ${scrollable} w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6`}
+                className={clsx(
+                    'h-[calc(100vh-168px)] lg:mt-8 flex w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6 graphs-boxxxx',
+                    {
+                        'flex-col overflow-y-scroll': screenWidth < 600,
+                        'flex-row': screenWidth >= 600
+                    }
+                )}
             >
                 {loading ?
                     <>

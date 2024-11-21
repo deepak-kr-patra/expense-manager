@@ -8,6 +8,7 @@ const BarGraph = ({ expenses }) => {
 
     const { barGraphPeriod } = useChartsDetails();
     const { screenWidth } = useScreenWidth();
+    let barGraphExpenses = [];
 
     const monthExpenses = {
         jan: 0,
@@ -33,8 +34,12 @@ const BarGraph = ({ expenses }) => {
             return;
         }
 
-        let month = formatDateToLocal(date).substring(0, 3).toLowerCase();
-        monthExpenses[month] += expense.amount;
+        barGraphExpenses.push(expense);
+    });
+
+    barGraphExpenses.map((barExpense) => {
+        let month = formatDateToLocal(barExpense.date).substring(0, 3).toLowerCase();
+        monthExpenses[month] += barExpense.amount;
     });
 
     const graphData = [
@@ -63,35 +68,41 @@ const BarGraph = ({ expenses }) => {
     };
 
     return (
-        <VictoryChart
-            domainPadding={20}
-            theme={VictoryTheme.clean}
-            height={screenWidth < 600 ? 230 : 350}
-        >
-            <VictoryAxis
-                // tickValues specifies both the number of ticks and where
-                // they are placed on the axis
-                tickValues={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
-                tickFormat={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
-            />
-            <VictoryAxis
-                dependentAxis
-                // tickFormat specifies how ticks should be displayed
-                tickFormat={(x) => formatCurrencyLabel(x)}
-            />
-            <VictoryBar
-                data={graphData}
-                // data accessor for x values
-                x="month"
-                // data accessor for y values
-                y="expenses"
-                barRatio={0.8}
-                animate={{
-                    duration: 1000,
-                    onLoad: { duration: 500 }
-                }}
-            />
-        </VictoryChart>
+        <>
+            {barGraphExpenses.length === 0 && <h3 className="text-sm">No expense made in this period!</h3>}
+
+            {barGraphExpenses.length > 0 &&
+                <VictoryChart
+                    domainPadding={20}
+                    theme={VictoryTheme.clean}
+                    height={screenWidth < 600 ? 230 : 350}
+                >
+                    <VictoryAxis
+                        // tickValues specifies both the number of ticks and where
+                        // they are placed on the axis
+                        tickValues={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                        tickFormat={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+                    />
+                    <VictoryAxis
+                        dependentAxis
+                        // tickFormat specifies how ticks should be displayed
+                        tickFormat={(x) => formatCurrencyLabel(x)}
+                    />
+                    <VictoryBar
+                        data={graphData}
+                        // data accessor for x values
+                        x="month"
+                        // data accessor for y values
+                        y="expenses"
+                        barRatio={0.8}
+                        animate={{
+                            duration: 1000,
+                            onLoad: { duration: 500 }
+                        }}
+                    />
+                </VictoryChart>
+            }
+        </>
     )
 }
 

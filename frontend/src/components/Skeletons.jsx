@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import useScreenWidth from "../zustand/useScreenwidth";
 
 
@@ -61,7 +62,7 @@ export function ExpensesTableSkeleton() {
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
-                <div className="rounded-lg bg-gray-50 p-2 lg:pt-0">
+                <div className="rounded-lg bg-gray-100 p-2 lg:pt-0">
                     <div className="lg:hidden">
                         <ExpensesMobileSkeleton />
                         <ExpensesMobileSkeleton />
@@ -164,7 +165,7 @@ export function PendingExpensesTableSkeleton() {
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
-                <div className="rounded-lg bg-gray-50 p-2 lg:pt-0">
+                <div className="rounded-lg bg-gray-100 p-2 lg:pt-0">
                     <div className="lg:hidden">
                         <PendingExpensesMobileSkeleton />
                         <PendingExpensesMobileSkeleton />
@@ -209,11 +210,14 @@ export function GraphSkeleton() {
 
     const { screenWidth } = useScreenWidth();
 
-    const height = screenWidth < 600 ? "h-1/2" : "h-full";
-    const width = screenWidth < 600 ? "w-full" : "w-1/2";
-
     return (
-        <div className={`${height} ${width} rounded-lg bg-gray-50 p-2 md:p-4`}>
+        <div className={clsx(
+            'rounded-lg bg-gray-100 p-2 md:p-4',
+            {
+                'h-1/2 w-full': screenWidth < 600,
+                'h-full w-1/2': screenWidth >= 600
+            }
+        )}>
             <div className="h-full w-full rounded-md bg-white"></div>
         </div>
     )
@@ -221,6 +225,6 @@ export function GraphSkeleton() {
 
 export function TotalExpenseSkeleton() {
     return (
-        <div className="w-60 h-6 md:w-80 md:h-8 rounded-lg bg-gray-50"></div>
+        <div className="w-60 h-6 md:w-80 md:h-8 rounded-lg bg-gray-100"></div>
     )
 }
