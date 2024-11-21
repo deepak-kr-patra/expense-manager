@@ -76,7 +76,7 @@ const Signup = () => {
                             <input
                                 type="text"
                                 id='username-div-input-signup'
-                                className="input input-bordered focus:outline-none focus:border-black w-full h-12"
+                                className="input input-bordered focus:outline-none focus:border-black focus:border-2 w-full h-12"
                                 value={userInputs.username}
                                 onChange={(e) => setUserInputs({ ...userInputs, username: e.target.value })}
                             />
@@ -87,7 +87,7 @@ const Signup = () => {
                             <input
                                 type={!passwordVisibility ? "password" : "text"}
                                 id='password-div-input-signup'
-                                className="input input-bordered focus:outline-none focus:border-black w-full h-12"
+                                className="input input-bordered focus:outline-none focus:border-black focus:border-2 w-full h-12"
                                 value={userInputs.password}
                                 onChange={(e) => setUserInputs({ ...userInputs, password: e.target.value })}
                             />
@@ -101,7 +101,7 @@ const Signup = () => {
                             <input
                                 type={!confirmPasswordVisibility ? "password" : "text"}
                                 id='confirmPassword-div-input-signup'
-                                className="input input-bordered focus:outline-none focus:border-black w-full h-12"
+                                className="input input-bordered focus:outline-none focus:border-black focus:border-2 w-full h-12"
                                 value={userInputs.confirmedPassword}
                                 onChange={(e) => setUserInputs({ ...userInputs, confirmedPassword: e.target.value })}
                             />

@@ -39,7 +39,7 @@ const Charts = () => {
             <div
                 // className={`h-[calc(100vh-168px)] lg:mt-8 flex ${flex_dir} ${scrollable} w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6`}
                 className={clsx(
-                    'h-[calc(100vh-168px)] lg:mt-8 flex w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6 graphs-boxxxx',
+                    'h-[calc(100dvh-168px)] lg:mt-8 flex w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6',
                     {
                         'flex-col overflow-y-scroll': screenWidth < 600,
                         'flex-row': screenWidth >= 600
