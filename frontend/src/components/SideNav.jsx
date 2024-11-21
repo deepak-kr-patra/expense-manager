@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline';
 import NavLinks from './NavLinks';
-// import { FaChartColumn } from "react-icons/fa6";
 import LogOutModal from './LogOutModal';
 
 
@@ -21,14 +20,13 @@ export default function SideNav() {
             >
                 <div className="w-full flex items-center justify-center gap-3 text-white lg:w-full">
                     <p className='logo-header'>Expense Manager</p>
-                    {/* <FaChartColumn className="text-lg" /> */}
                 </div>
             </Link>
             <div className={`flex grow flex-row justify-between space-x-2 lg:flex-col lg:space-x-0 lg:space-y-2`}>
                 <NavLinks />
-                <div className="hidden h-auto w-full grow rounded-md bg-gray-50 lg:block"></div>
+                <div className="hidden h-auto w-full grow rounded-md bg-gray-100 lg:block"></div>
                 <button
-                    className="flex h-[40px] items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 lg:flex-none lg:justify-start lg:p-2 lg:px-3"
+                    className="flex h-[40px] items-center justify-center gap-2 rounded-md bg-gray-100 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 lg:flex-none lg:justify-start lg:p-2 lg:px-3"
                     onClick={() => toggleLogoutModal()}
                 >
                     <ArrowLeftStartOnRectangleIcon className='w-4 lg:w-6' />

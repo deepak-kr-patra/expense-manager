@@ -23,8 +23,8 @@ const useGetExpenses = () => {
                     throw new Error(data.error);
                 }
     
-                setExpenses(data);
-                setSelectedExpenses(data);
+                setExpenses([...data].reverse());
+                setSelectedExpenses([...data].reverse());
     
             } catch (error) {
                 toast.error(error.message);

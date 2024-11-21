@@ -21,9 +21,9 @@ const Home = () => {
       </div>
       <div className={`grow h-[calc(100vh-128px)] lg:h-full flex flex-col lg:flex-row ${padding}`}>
         <Routes>
-          <Route path="/" element={<Charts />} />
-          <Route path="expenses/*" element={<Expenses />} />
+          <Route path="/" element={<Expenses />} />
           <Route path="pending/*" element={<PendingExpenses />} />
+          <Route path="graphs/*" element={<Charts />} />
         </Routes>
       </div>
     </div>
@@ -31,15 +31,3 @@ const Home = () => {
 }
 
 export default Home
-
-
-{/* <div className="rounded-xl bg-gray-50 p-4">
-          <div className='w-full h-full rounded-md bg-white'>
-            <BarGraph />
-          </div>
-        </div>
-        <div className="rounded-xl bg-gray-50 p-4">
-          <div className='w-full h-full rounded-md bg-white'>
-            <PieChart />
-          </div>
-        </div> */}

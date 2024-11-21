@@ -24,10 +24,10 @@ const BarGraphDropdown = () => {
         <div
             className="dropdown dropdown-bottom dropdown-end rounded-lg h-6 lg:h-9 flex items-center px-2 lg:px-4 bg-[#EAECEF] w-[108px] lg:w-32 border-2 hover:border-black cursor-pointer"
             id='graph-dropdown'
+            onClick={() => toggleDropdown()}
         >
             <div
                 className='w-full flex items-center justify-between gap-2'
-                onClick={() => toggleDropdown()}
             >
                 <h3 className='text-xs lg:text-md'>{barGraphPeriod}</h3>
                 {!toggleState ? <ChevronDownIcon className='w-3 lg:w-4' /> : <ChevronUpIcon className='w-3 lg:w-4' />}

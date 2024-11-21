@@ -46,7 +46,6 @@ const AddExpenseModal = ({ toggleAddExpenseModal }) => {
                     <div className='relative mb-8 max-sm:mb-6'>
                         <input
                             type="text"
-                            // id='title-input'
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full h-12"
                             placeholder='Enter title'
                             value={userInputs.title}
@@ -55,12 +54,10 @@ const AddExpenseModal = ({ toggleAddExpenseModal }) => {
                     </div>
 
                     <div className='mb-8 max-sm:mb-6'>
-                        {/* <label htmlFor="count" className='text-white pl-2 section-info-text'>Enter amount</label> */}
                         <input
                             type="number"
                             placeholder="Enter amount"
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full"
-                            // id='count'
                             value={userInputs.amount}
                             onChange={(e) => setUserInputs({ ...userInputs, amount: e.target.value })}
                             step={.01}
@@ -82,15 +79,12 @@ const AddExpenseModal = ({ toggleAddExpenseModal }) => {
                             <option>study</option>
                             <option>others</option>
                         </select>
-                        {/* <label className="flex items-center w-full md:w-1/2"> */}
                         <input
                             type="date"
-                            className="growwww w-full md:w-1/2 input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
-                            // id='date'
+                            className="w-full md:w-1/2 input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
                             value={userInputs.date}
                             onChange={(e) => setUserInputs({ ...userInputs, date: e.target.value })}
                         />
-                        {/* </label> */}
                     </div>
 
                     <div className='flex justify-end mt-6 gap-2'>

@@ -6,12 +6,6 @@ const UpdateExpenseModal = ({ toggleUpdateExpenseModal }) => {
 
     const { expenseToUpdate, setExpenseToUpdate } = useExpenses();
 
-    // const [userInputs, setUserInputs] = useState({
-    //     title: expenseToUpdate?.title,
-    //     amount: expenseToUpdate?.amount,
-    //     category: expenseToUpdate?.category,
-    //     date: expenseToUpdate?.date
-    // });
     const expenseToUpdateValues = {
         title: expenseToUpdate?.title,
         amount: expenseToUpdate?.amount,
@@ -54,7 +48,6 @@ const UpdateExpenseModal = ({ toggleUpdateExpenseModal }) => {
                     <div className='relative mb-8 max-sm:mb-6'>
                         <input
                             type="text"
-                            // id='title-input'
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full h-12"
                             placeholder='Enter title'
                             value={expenseToUpdate?.title}
@@ -63,12 +56,10 @@ const UpdateExpenseModal = ({ toggleUpdateExpenseModal }) => {
                     </div>
 
                     <div className='mb-8 max-sm:mb-6'>
-                        {/* <label htmlFor="count" className='text-white pl-2 section-info-text'>Enter amount</label> */}
                         <input
                             type="number"
                             placeholder="Enter amount"
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full"
-                            // id='count'
                             value={expenseToUpdate?.amount}
                             onChange={(e) => setExpenseToUpdate({ ...expenseToUpdate, amount: e.target.value })}
                             step={.01}
@@ -90,15 +81,12 @@ const UpdateExpenseModal = ({ toggleUpdateExpenseModal }) => {
                             <option>study</option>
                             <option>others</option>
                         </select>
-                        {/* <label className="flex items-center w-full md:w-1/2"> */}
                         <input
                             type="date"
-                            className="growww w-full md:w-1/2 input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
-                            // id='date'
+                            className="w-full md:w-1/2 input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
                             value={expenseToUpdate?.date}
                             onChange={(e) => setExpenseToUpdate({ ...expenseToUpdate, date: e.target.value })}
                         />
-                        {/* </label> */}
                     </div>
 
                     <div className='flex justify-end mt-6 gap-2'>

@@ -10,9 +10,9 @@ import clsx from 'clsx';
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-    { name: 'Graph', href: '/dashboard', icon: ChartPieIcon },
-    { name: 'Expenses', href: '/dashboard/expenses', icon: DocumentCurrencyRupeeIcon, },
-    { name: 'Pending', href: '/dashboard/pending', icon: CalendarDaysIcon },
+    { name: 'Expenses', href: '/expenses', icon: DocumentCurrencyRupeeIcon, },
+    { name: 'Pending', href: '/expenses/pending', icon: CalendarDaysIcon },
+    { name: 'Graphs', href: '/expenses/graphs', icon: ChartPieIcon },
 ];
 
 export default function NavLinks() {
@@ -27,7 +27,7 @@ export default function NavLinks() {
                         key={link.name}
                         to={link.href}
                         className={clsx(
-                            'flex h-[40px] grow items-center justify-center gap-1 lg:gap-2 rounded-md bg-gray-50 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 lg:flex-none lg:justify-start p-2 lg:p-2 lg:px-3',
+                            'flex h-[40px] grow items-center justify-center gap-1 lg:gap-2 rounded-md bg-gray-100 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 lg:flex-none lg:justify-start p-2 lg:p-2 lg:px-3',
                             {
                                 'bg-sky-100 text-blue-600': pathname === link.href,
                             },

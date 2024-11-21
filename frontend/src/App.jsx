@@ -27,10 +27,10 @@ function App() {
     <div className='wrapper'>
       <Routes>
         {/* <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />} /> */}
-        <Route path="/" element={authUser ? <Navigate to={"/dashboard"} /> : <Navigate to={"/login"} />} />
-        <Route path="dashboard/*" element={authUser ? <Home /> : <Navigate to={"/login"} />} />
-        <Route path="login/*" element={authUser ? <Navigate to={"/dashboard"} /> : <Login />} />
-        <Route path="signup/*" element={authUser ? <Navigate to={"/dashboard"} /> : <Signup />} />
+        <Route path="/" element={authUser ? <Navigate to={"/expenses"} /> : <Navigate to={"/login"} />} />
+        <Route path="expenses/*" element={authUser ? <Home /> : <Navigate to={"/login"} />} />
+        <Route path="login/*" element={authUser ? <Navigate to={"/expenses"} /> : <Login />} />
+        <Route path="signup/*" element={authUser ? <Navigate to={"/expenses"} /> : <Signup />} />
       </Routes>
       <Toaster />
     </div>

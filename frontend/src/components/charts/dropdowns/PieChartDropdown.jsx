@@ -24,17 +24,16 @@ const PieChartDropdown = () => {
         <div
             className="dropdown dropdown-bottom dropdown-end rounded-lg h-6 lg:h-9 flex items-center px-2 lg:px-4 bg-[#EAECEF] w-[108px] lg:w-32 border-2 hover:border-black cursor-pointer"
             id='pie-chart-dropdown'
+            onClick={() => toggleDropdown()}
         >
             <div
                 className='w-full flex items-center justify-between gap-2'
-                onClick={() => toggleDropdown()}
             >
                 <h3 className='text-xs lg:text-md'>{pieChartPeriod}</h3>
                 {!toggleState ? <ChevronDownIcon className='w-4' /> : <ChevronUpIcon className='w-4' />}
             </div>
 
             <ul
-                // tabIndex={0}
                 className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
                 onClick={() => toggleDropdown()}
             >
@@ -62,16 +61,3 @@ const PieChartDropdown = () => {
 }
 
 export default PieChartDropdown
-
-
-// return (
-//     <select
-//         id='add-expense-category-boxvksjvb'
-//         className="select h-9 min-h-9 select-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full md:w-1/2"
-//     >
-//         <option disabled selected>Select category?</option>
-//         <option>All Time</option>
-//         <option>This Year</option>
-//         <option>Last 90 Days</option>
-//     </select>
-// )

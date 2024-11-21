@@ -2,7 +2,7 @@ import { CheckIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import useGetPendingExpenses from "../../hooks/pending_expenses/useGetPendingExpenses";
 import formatDateToLocal from "../../utils/formatDateToLocal";
 import formatCurrency from "../../utils/formatCurrency";
-import { ExpensesTableSkeleton, PendingExpensesTableSkeleton } from "../Skeletons";
+import { PendingExpensesTableSkeleton } from "../Skeletons";
 
 
 const PendingExpensesTable = ({
@@ -11,7 +11,7 @@ const PendingExpensesTable = ({
     toggleCompletePendingExpenseModal
 }) => {
 
-    const { loading, selectedPendingExpenses } = useGetPendingExpenses();
+    const { loading, pendingExpenses, selectedPendingExpenses } = useGetPendingExpenses();
 
     const icons = {
         food: "/cutlery.png",
@@ -26,15 +26,15 @@ const PendingExpensesTable = ({
         <>
             {loading && <PendingExpensesTableSkeleton />}
 
-            {!loading && selectedPendingExpenses.length === 0 && (
-                <div className="mt-4 lg:mt-6 w-full grow flex flex-col items-center justify-center rounded-lg bg-gray-50 p-2 gap-1">
+            {!loading && pendingExpenses.length === 0 && (
+                <div className="mt-4 lg:mt-6 w-full grow flex flex-col items-center justify-center rounded-lg bg-gray-100 p-2 gap-1">
                     <h3 className="text-sm">You have no pending expense.</h3>
                     <h3 className="text-sm">Add an upcoming expense!</h3>
                 </div>
             )}
 
-            {!loading && selectedPendingExpenses.length > 0 &&
-                <div className="mt-4 lg:mt-6 w-full overflow-y-auto rounded-lg bg-gray-50 border-8 lg:border-r-0xxx lg:border-t-0 border-gray-50">
+            {!loading && pendingExpenses.length > 0 &&
+                <div className="mt-4 lg:mt-6 w-full overflow-y-auto rounded-lg bg-gray-100 border-8 lg:border-r-0xxx lg:border-t-0 border-gray-100">
                     <div className="lg:hidden flex flex-col gap-2">
                         {selectedPendingExpenses?.map((expense) => (
                             <div
@@ -45,7 +45,6 @@ const PendingExpensesTable = ({
                                     <div className="mb-2 flex items-center gap-2">
                                         <img
                                             src={icons[expense.category]}
-                                            // className="mr-2 rounded-full"
                                             alt="image"
                                             width={28}
                                             height={28}
@@ -87,7 +86,7 @@ const PendingExpensesTable = ({
                         ))}
                     </div>
                     <table className="hidden w-full text-gray-900 lg:table">
-                        <thead className="rounded-lg text-left text-sm font-normal sticky top-0 bg-gray-50">
+                        <thead className="rounded-lg text-left text-sm font-normal sticky top-0 bg-gray-100">
                             <tr className="text-black textarea-md">
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Title
@@ -121,7 +120,6 @@ const PendingExpensesTable = ({
                                         <div className="flex items-center gap-2">
                                             <img
                                                 src={icons[expense.category]}
-                                                // className="rounded-full"
                                                 alt="image"
                                                 width={28}
                                                 height={28}

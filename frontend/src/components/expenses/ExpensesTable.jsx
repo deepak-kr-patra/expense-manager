@@ -7,7 +7,7 @@ import { ExpensesTableSkeleton } from "../Skeletons";
 
 const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) => {
 
-    const { loading, selectedExpenses } = useGetExpenses();
+    const { loading, expenses, selectedExpenses } = useGetExpenses();
 
     const icons = {
         food: "/cutlery.png",
@@ -22,33 +22,31 @@ const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) =
         <>
             {loading && <ExpensesTableSkeleton />}
 
-            {!loading && selectedExpenses.length === 0 && (
-                <div className="mt-4 lg:mt-6 w-full grow flex flex-col items-center justify-center rounded-lg bg-gray-50 p-2 gap-1">
+            {!loading && expenses.length === 0 && (
+                <div className="mt-4 lg:mt-6 w-full grow flex flex-col items-center justify-center rounded-lg bg-gray-100 p-2 gap-1">
                     <h3 className="text-sm">You have made no expense.</h3>
                     <h3 className="text-sm">Add an expense!</h3>
                 </div>
             )}
 
-            {!loading && selectedExpenses.length > 0 &&
-                <div className="mt-4 lg:mt-6 w-full overflow-y-auto rounded-lg bg-gray-50 border-8 lg:border-r-0xxx lg:border-t-0 border-gray-50">
+            {!loading && expenses.length > 0 &&
+                <div className="mt-4 lg:mt-6 w-full overflow-y-auto rounded-lg bg-gray-100 border-8 lg:border-r-0xxx lg:border-t-0 border-gray-100">
                     <div className="lg:hidden flex flex-col gap-2">
                         {selectedExpenses?.map((expense) => (
                             <div
                                 key={expense._id}
-                                className="mb-2xxx w-full rounded-md bg-white p-4"
+                                className="w-full rounded-md bg-white p-4"
                             >
                                 <div className="flex items-center justify-between border-b pb-4">
                                     <div className="mb-2 flex items-center gap-2">
                                         <img
                                             src={icons[expense.category]}
-                                            // className="mr-2 rounded-full"
                                             alt="image"
                                             width={28}
                                             height={28}
                                         />
                                         <p>{expense.title}</p>
                                     </div>
-                                    {/* <ExpenseStatus status={expense.status} /> */}
                                 </div>
                                 <div className="flex w-full items-center justify-between pt-4">
                                     <div>
@@ -78,7 +76,7 @@ const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) =
                         ))}
                     </div>
                     <table className="hidden w-full text-gray-900 lg:table">
-                        <thead className="rounded-lg text-left text-sm font-normal sticky top-0 bg-gray-50">
+                        <thead className="rounded-lg text-left text-sm font-normal sticky top-0 bg-gray-100">
                             <tr className="text-black textarea-md">
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Title
@@ -92,9 +90,6 @@ const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) =
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Date
                                 </th>
-                                {/* <th scope="col" className="px-3 py-5 font-medium">
-                            Status
-                        </th> */}
                                 <th scope="col" className="relative py-3 pl-6 pr-3">
                                     <span className="sr-only">Edit</span>
                                 </th>
@@ -115,7 +110,6 @@ const ExpensesTable = ({ toggleRemoveExpenseModal, toggleUpdateExpenseModal }) =
                                         <div className="flex items-center gap-2">
                                             <img
                                                 src={icons[expense.category]}
-                                                // className="rounded-full"
                                                 alt="image"
                                                 width={28}
                                                 height={28}
