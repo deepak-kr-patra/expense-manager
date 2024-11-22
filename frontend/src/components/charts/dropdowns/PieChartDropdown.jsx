@@ -29,13 +29,12 @@ const PieChartDropdown = () => {
             <div
                 className='w-full flex items-center justify-between gap-2'
             >
-                <h3 className='text-xs lg:text-md'>{pieChartPeriod}</h3>
-                {!toggleState ? <ChevronDownIcon className='w-4' /> : <ChevronUpIcon className='w-4' />}
+                <h3 className='w-full text-xs lg:text-md'>{pieChartPeriod}</h3>
+                {!toggleState ? <ChevronDownIcon className='w-3 lg:w-4' /> : <ChevronUpIcon className='w-3 lg:w-4' />}
             </div>
 
             <ul
                 className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-                onClick={() => toggleDropdown()}
             >
                 <div
                     className='p-2 max-md:p-1.5 max-sm:p-1 rounded-lg hover:bg-slate-200 cursor-pointer'

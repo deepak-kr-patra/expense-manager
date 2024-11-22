@@ -66,7 +66,7 @@ const Login = () => {
               <input
                 type="text"
                 id='username-div-input-login'
-                className="input input-bordered focus:outline-none focus:border-black w-full h-12"
+                className="input input-bordered focus:outline-none focus:border-black focus:border-2 w-full h-12"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -77,7 +77,7 @@ const Login = () => {
               <input
                 type={!passwordVisibility ? "password" : "text"}
                 id='password-div-input-login'
-                className="input input-bordered focus:outline-none focus:border-black w-full h-12"
+                className="input input-bordered focus:outline-none focus:border-black focus:border-2 w-full h-12"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

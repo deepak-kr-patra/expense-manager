@@ -4,7 +4,7 @@ import ExpensesTable from "./ExpensesTable"
 import useExpenses from "../../zustand/useExpenses"
 import AddExpenseModal from "./modals/AddExpenseModal"
 import RemoveExpenseModal from "./modals/RemoveExpenseModal"
-import UpdateExpenseModal from "./modals/updateExpenseModal"
+import UpdateExpenseModal from "./modals/UpdateExpenseModal"
 
 
 const Expenses = () => {
