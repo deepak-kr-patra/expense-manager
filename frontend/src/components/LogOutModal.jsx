@@ -8,7 +8,7 @@ const LogOutModal = ({ toggleLogoutModal }) => {
     return (
         <div className='modal-container' id='logout-modal-container'>
             <div className="modal-box max-sm:p-4 bg-[#F4F5F7]">
-                <h3 className="font-bold text-lg max-sm:text-[16px]">Log out from your account?</h3>
+                <h3 className="font-bold text-lg max-sm:text-[16px]">LOG OUT FROM YOUR ACCOUNT?</h3>
                 <div className='flex justify-end mt-6 gap-2'>
                     <button
                         className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2 bg-gray-300"

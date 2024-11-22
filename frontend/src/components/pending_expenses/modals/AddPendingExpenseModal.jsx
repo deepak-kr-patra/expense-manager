@@ -40,11 +40,15 @@ const AddPendingExpenseModal = ({ toggleAddPendingExpenseModal }) => {
 
     return (
         <div className='modal-container' id='add-pending-expense-modal-container'>
-            <div className="modal-box max-sm:p-4 bg-[#F4F5F7]">
-                <h3 className="font-bold text-lg max-sm:text-[16px] mb-8">Add a pending expense</h3>
+            <div className="modal-box max-h-full max-sm:p-4 bg-[#F4F5F7]">
+                <h3 className="font-bold text-lg max-sm:text-[16px] mb-6">ADD UPCOMING EXPENSE</h3>
                 <form onSubmit={savePendingExpense} className='flex flex-col'>
-                    <div className='relative mb-8 max-sm:mb-6'>
+                    <div className='mb-4'>
+                        <label className="label pt-0 pb-1 cursor-pointer" htmlFor='add-pending-title-input'>
+                            <span className="label-text">Upcomig Expense Title</span>
+                        </label>
                         <input
+                            id='add-pending-title-input'
                             type="text"
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full h-12"
                             placeholder='Enter title'
@@ -53,8 +57,12 @@ const AddPendingExpenseModal = ({ toggleAddPendingExpenseModal }) => {
                         />
                     </div>
 
-                    <div className='mb-8 max-sm:mb-6'>
+                    <div className='mb-4'>
+                        <label className="label pt-0 pb-1 cursor-pointer" htmlFor='add-pending-amount-input'>
+                            <span className="label-text">Upcoming Expense Amount</span>
+                        </label>
                         <input
+                            id='add-pending-amount-input'
                             type="number"
                             placeholder="Enter amount"
                             className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full"
@@ -64,27 +72,38 @@ const AddPendingExpenseModal = ({ toggleAddPendingExpenseModal }) => {
                         />
                     </div>
 
-                    <div className='w-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 md:gap-2 mb-8 max-sm:mb-6'>
-                        <select
-                            id='add-pending-expense-category-box'
-                            className="select select-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full md:w-1/2 h-full"
-                            value={userInputs.category}
-                            onChange={(e) => setUserInputs({ ...userInputs, category: e.target.value })}
-                        >
-                            <option disabled selected>Select category?</option>
-                            <option>food</option>
-                            <option>clothing</option>
-                            <option>home</option>
-                            <option>travel</option>
-                            <option>study</option>
-                            <option>others</option>
-                        </select>
-                        <input
-                            type="date"
-                            className="w-full md:w-1/2 input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
-                            value={userInputs.date}
-                            onChange={(e) => setUserInputs({ ...userInputs, date: e.target.value })}
-                        />
+                    <div className='w-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 md:gap-2 mb-4'>
+                        <div className='w-full md:w-1/2'>
+                            <label className="label pt-0 pb-1 cursor-pointer" htmlFor='add-pending-expense-category-box'>
+                                <span className="label-text">Upcoming Expense Category</span>
+                            </label>
+                            <select
+                                id='add-pending-expense-category-box'
+                                className="w-full select select-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
+                                value={userInputs.category}
+                                onChange={(e) => setUserInputs({ ...userInputs, category: e.target.value })}
+                            >
+                                <option disabled selected>Select category?</option>
+                                <option>food</option>
+                                <option>clothing</option>
+                                <option>home</option>
+                                <option>travel</option>
+                                <option>study</option>
+                                <option>others</option>
+                            </select>
+                        </div>
+                        <div className='w-full md:w-1/2'>
+                            <label className="label pt-0 pb-1 cursor-pointer" htmlFor='add-pending-date-input'>
+                                <span className="label-text">Upcoming Expense Date</span>
+                            </label>
+                            <input
+                                id='add-pending-date-input'
+                                type="date"
+                                className="w-full input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
+                                value={userInputs.date}
+                                onChange={(e) => setUserInputs({ ...userInputs, date: e.target.value })}
+                            />
+                        </div>
                     </div>
 
                     <div className='flex justify-end mt-6 gap-2'>

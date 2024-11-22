@@ -15,7 +15,7 @@ const RemovePendingExpenseModal = ({ toggleRemovePendingExpenseModal }) => {
     return (
         <div className='modal-container' id='remove-pending-expense-modal-container'>
             <div className="modal-box max-sm:p-4 bg-[#F4F5F7]">
-                <h3 className="font-bold text-lg max-sm:text-[16px]">Delete pending expense?</h3>
+                <h3 className="font-bold text-lg max-sm:text-[16px]">DELETE PENDING EXPENSE?</h3>
                 <div className='flex justify-end mt-6 gap-2'>
                     <button
                         className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2 bg-gray-300"
