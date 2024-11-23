@@ -18,9 +18,6 @@ const Charts = () => {
         total_expense += expense.amount;
     });
 
-    // const flex_dir = screenWidth < 600 ? "flex-col" : "flex-row";
-    // const scrollable = screenWidth < 600 ? "overflow-y-scroll" : "";
-
     return (
         <div className="w-full h-full flex flex-col">
             <div className="flex w-full h-10 items-center justify-between">
@@ -37,7 +34,6 @@ const Charts = () => {
                 )}
             </div>
             <div
-                // className={`h-[calc(100vh-168px)] lg:mt-8 flex ${flex_dir} ${scrollable} w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6`}
                 className={clsx(
                     'h-[calc(100dvh-168px)] lg:mt-8 flex w-full md:grow md:h-auto items-center justify-start md:justify-center gap-2 lg:gap-6',
                     {

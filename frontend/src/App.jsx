@@ -26,7 +26,6 @@ function App() {
   return (
     <div className='wrapper'>
       <Routes>
-        {/* <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />} /> */}
         <Route path="/" element={authUser ? <Navigate to={"/expenses"} /> : <Navigate to={"/login"} />} />
         <Route path="expenses/*" element={authUser ? <Home /> : <Navigate to={"/login"} />} />
         <Route path="login/*" element={authUser ? <Navigate to={"/expenses"} /> : <Login />} />
