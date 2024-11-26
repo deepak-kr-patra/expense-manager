@@ -1,5 +1,6 @@
 import usePendingExpenses from "../../../zustand/usePendingExpenses";
 import useCompletePendingExpense from "../../../hooks/pending_expenses/useCompletePendingExpense";
+import formatDate from "../../../utils/formatDate";
 
 
 const CompletePendingExpenseModal = ({ toggleCompletePendingExpenseModal }) => {
@@ -43,7 +44,7 @@ const CompletePendingExpenseModal = ({ toggleCompletePendingExpenseModal }) => {
     return (
         <div className='modal-container' id='complete-pending-expense-modal-container'>
             <div className="modal-box max-h-full max-sm:p-4 bg-[#F4F5F7]">
-                <h3 className="font-bold text-lg max-sm:text-[16px] mb-8">COMPLETE PENDING EXPENSE?</h3>
+                <h3 className="font-bold text-lg max-sm:text-[16px] mb-6">COMPLETE PENDING EXPENSE?</h3>
                 <form onSubmit={finishPendingExpense} className='flex flex-col'>
                     <div className='mb-4'>
                         <label className="label pt-0 pb-1 cursor-pointer" htmlFor='complete-pending-title-input'>
@@ -102,7 +103,7 @@ const CompletePendingExpenseModal = ({ toggleCompletePendingExpenseModal }) => {
                                 id="complete-pending-date-input"
                                 type="date"
                                 className="w-full input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
-                                value={pendingExpenseToComplete?.date}
+                                value={formatDate(pendingExpenseToComplete?.date)}
                                 onChange={(e) => setPendingExpenseToComplete({ ...pendingExpenseToComplete, date: e.target.value })}
                             />
                         </div>

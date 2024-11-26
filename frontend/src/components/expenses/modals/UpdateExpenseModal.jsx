@@ -1,4 +1,5 @@
 import useUpdateExpense from "../../../hooks/expenses/useUpdateExpense";
+import formatDate from "../../../utils/formatDate";
 import useExpenses from "../../../zustand/useExpenses";
 
 
@@ -102,7 +103,7 @@ const UpdateExpenseModal = ({ toggleUpdateExpenseModal }) => {
                                 id="update-date-input"
                                 type="date"
                                 className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full"
-                                value={expenseToUpdate?.date}
+                                value={formatDate(expenseToUpdate?.date)}
                                 onChange={(e) => setExpenseToUpdate({ ...expenseToUpdate, date: e.target.value })}
                             />
                         </div>

@@ -1,5 +1,6 @@
 import usePendingExpenses from "../../../zustand/usePendingExpenses";
 import useUpdatePendingExpense from "../../../hooks/pending_expenses/useUpdatePendingExpense";
+import formatDate from "../../../utils/formatDate";
 
 
 const UpdatePendingExpenseModal = ({ toggleUpdatePendingExpenseModal }) => {
@@ -102,7 +103,7 @@ const UpdatePendingExpenseModal = ({ toggleUpdatePendingExpenseModal }) => {
                                 id="update-pending-date-input"
                                 type="date"
                                 className="w-full input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
-                                value={pendingExpenseToUpdate?.date}
+                                value={formatDate(pendingExpenseToUpdate?.date)}
                                 onChange={(e) => setPendingExpenseToUpdate({ ...pendingExpenseToUpdate, date: e.target.value })}
                             />
                         </div>
