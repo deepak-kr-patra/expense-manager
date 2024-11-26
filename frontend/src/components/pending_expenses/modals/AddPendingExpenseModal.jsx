@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useAddPendingExpense from '../../../hooks/pending_expenses/useAddPendingExpense';
+import formatDate from '../../../utils/formatDate';
 
 
 const AddPendingExpenseModal = ({ toggleAddPendingExpenseModal }) => {
@@ -100,7 +101,7 @@ const AddPendingExpenseModal = ({ toggleAddPendingExpenseModal }) => {
                                 id='add-pending-date-input'
                                 type="date"
                                 className="w-full input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white"
-                                value={userInputs.date}
+                                value={formatDate(userInputs.date)}
                                 onChange={(e) => setUserInputs({ ...userInputs, date: e.target.value })}
                             />
                         </div>

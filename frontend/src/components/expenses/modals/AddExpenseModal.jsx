@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useAddExpense from '../../../hooks/expenses/useAddExpense';
+import formatDate from '../../../utils/formatDate';
 
 
 const AddExpenseModal = ({ toggleAddExpenseModal }) => {
@@ -100,7 +101,7 @@ const AddExpenseModal = ({ toggleAddExpenseModal }) => {
                                 id='add-date-input'
                                 type="date"
                                 className="input input-bordered focus:outline-none focus:border-2 focus:border-blue-700 bg-[#EAECEF] focus:bg-white w-full"
-                                value={userInputs.date}
+                                value={formatDate(userInputs.date)}
                                 onChange={(e) => setUserInputs({ ...userInputs, date: e.target.value })}
                             />
                         </div>
